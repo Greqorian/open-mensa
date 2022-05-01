@@ -1,3 +1,4 @@
+import '../styles/LandingPage.scss'
 import { useQuery } from 'react-query'
 
 const LandingPage = () => {
@@ -20,10 +21,18 @@ const LandingPage = () => {
 
     if (data) { console.log(data) }
 
-    return (<div>
-
-
-    </div>);
+    return (
+        <div className={'container'}>
+            <div className={'container-cards'}>
+                {data.map((i, index) => {
+                    return (<div key={index} className={'card'}>
+                        <p> {i.id}</p>
+                        <p> {i.name}</p>
+                        <p> {i.address}</p>
+                    </div>)
+                })}
+            </div>
+        </div>);
 }
 
 export default LandingPage;

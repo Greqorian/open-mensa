@@ -12,9 +12,12 @@
     "@types/react-dom": "^18.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-query": "^3.38.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.51.0",
     "typescript": "^4.6.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yarn": "^1.22.18"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "author": "Gregor Pawlak",
+  "license": "MIT"
 }
