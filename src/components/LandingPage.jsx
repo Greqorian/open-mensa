@@ -25,11 +25,13 @@ const LandingPage = () => {
         <div className={'container'}>
             <div className={'container-cards'}>
                 {data.map((i, index) => {
-                    return (<div key={index} className={'card'}>
-                        <p> {i.id}</p>
-                        <p> {i.name}</p>
-                        <p> {i.address}</p>
-                    </div>)
+                    return (
+                        <div key={index} className={'card'}>
+                            <p> {i.name}</p>
+                            <p> {i.city}</p>
+                            <p> {i.address}</p>
+                        </div>
+                    )
                 })}
             </div>
         </div>);
