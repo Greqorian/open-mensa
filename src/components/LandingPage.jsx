@@ -1,8 +1,12 @@
-import '../styles/LandingPage.scss'
+
 import { useQuery } from 'react-query'
 
-const LandingPage = () => {
+import Card from './Card'
+import { Container, ContainerCards } from './Containers'
+import ErrorMessage from './ErrorMessage'
+import Spinner from './Spinner'
 
+const LandingPage = () => {
 
     const { isLoading, isError, data, error } = useQuery('companyData', () =>
         fetch(`https://openmensa.org/api/v2/canteens?near[lat]=52.393535&near[lng]=13.127814&near[dist]=5`).then((res) =>
@@ -10,31 +14,20 @@ const LandingPage = () => {
         )
     )
 
-    if (isLoading) {
-        console.log('loading')
-        return <span>Loading...</span>
-    }
-
-    if (isError) {
-        return <span>Error: {error.message}</span>
-    }
-
-    if (data) { console.log(data) }
+    if (isLoading) {return <Spinner />}
+    if (isError) {return <ErrorMessage errorMsg={error.message}/>}
 
     return (
-        <div className={'container'}>
-            <div className={'container-cards'}>
+        <Container>
+            <ContainerCards>
                 {data.map((i, index) => {
                     return (
-                        <div key={index} className={'card'}>
-                            <p> {i.name}</p>
-                            <p> {i.city}</p>
-                            <p> {i.address}</p>
-                        </div>
+                        <Card key={index} name={i.name} city={i.city} address={i.address} />
                     )
                 })}
-            </div>
-        </div>);
+                
+            </ContainerCards>
+        </Container>);
 }
 
 export default LandingPage;
